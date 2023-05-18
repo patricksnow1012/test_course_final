@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-import pytest
 
 from base_class.base import Base
 
