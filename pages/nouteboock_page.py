@@ -1,7 +1,5 @@
 import time
 
-from selenium.webdriver.common.by import By
-
 from base_class.base import Base
 
 class Nouteboocks_Page(Base):
@@ -42,10 +40,10 @@ class Nouteboocks_Page(Base):
         self.send_buy().click()
 
     def read_name_object(self):
-        self.convert_text(self.send_name_object())
+        self.remove_suffix(self.send_name_object(), '(53013EUS) (53013EUS)')
 
     def read_price_object(self):
-        self.convert_text(self.send_price_object())
+        self.remove_suffix(self.send_price_object(), ' ₽')
 
     def click_continue_buy(self):
         self.send_continue_buy().click()
@@ -55,6 +53,7 @@ class Nouteboocks_Page(Base):
 
     def click_noreg(self):
         self.send_cont_noreg().click()
+
     # Start Steps
 
     def reference_noutebooc(self):
@@ -64,7 +63,6 @@ class Nouteboocks_Page(Base):
         self.read_price_object()
         self.click_buy()
         self.click_continue_buy()
-        self.refresh()
         self.scroll(500, 0)
         self.click_corzina()
         self.click_noreg()

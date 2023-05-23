@@ -1,12 +1,11 @@
-from base_class.base import Base
 from pages.nouteboock_page import Nouteboocks_Page
 
-class Main_Page(Base):
+class Corzina(Nouteboocks_Page):
 
     # Переменные
 
     price = "//div[@class = 'descriptionLine']/b[1]"
-    catalog_itogo = "//a[contains(@class, 'semibold') and contains(@title, 'Ноутбук HUAWEI')]"
+    towar_name = "//a[contains(@class, 'semibold') and contains(@title, 'Ноутбук HUAWEI')]"
     itogo_price = "//div[contains(@class, 'resultsLine')]/b"
 
     #Getters
@@ -15,7 +14,7 @@ class Main_Page(Base):
         return self.explicit_wait(self.price, 5)
 
     def send_towar_name(self):
-        return self.explicit_wait(self.catalog_itogo, 5)
+        return self.explicit_wait(self.towar_name, 5)
 
     def send_itogo_price(self):
         return self.explicit_wait(self.itogo_price, 5)
@@ -23,15 +22,17 @@ class Main_Page(Base):
     # Actions
 
     def read_price(self):
-        self.convert_text(self.send_price())
+        self.remove_suffix(self.send_price(), ' ₽')
 
     def read_name_towar(self):
-        self.convert_text(self.send_towar_name())
+        self.remove_suffix(self.send_towar_name(), '(53013EUS) (53013EUS)')
 
     def read_final_price(self):
-        self.convert_text(self.send_itogo_price())
+        self.remove_suffix(self.send_itogo_price(), ' ₽')
 
     # Start Steps
 
-    def start_main_page(self):
+    def start_corzina(self):
         self.get_current_url()
+        self.scroll(0, 500)
+        assert self.read_price() == self.read_price_object(), 'Invalid price'

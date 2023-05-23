@@ -16,12 +16,17 @@ class Base():
     def refresh(self):
         return self.browser.refresh()
 
-    # Конвертирование элемента в текст
+    # Конвертирование элемента в текст + удаление суффикса
 
-    def convert_text(self, element):
-        element = element.text
+    def remove_suffix(self, element, suffix):
+        element = element.text.removesuffix(f'{suffix}')
         print(element)
-        return element
+
+    # Конвертирование элемента в текст + удаление префикса
+
+    def remove_prefix(self, element, prefix):
+        element = element.text.removeprefix(f'{prefix}')
+        print(element)
 
     # Неявное ожидание
     def implicitly_waits(self, seconds):
@@ -52,8 +57,7 @@ class Base():
 
     # Проверка текста
     def assert_word(self, word, result):
-        value_word = word.text
-        assert value_word == result
+        assert word == result, 'Значение неверное'
         print("Good Value Word")
 
     # Скриншот

@@ -7,6 +7,7 @@ from selenium.webdriver import DesiredCapabilities
 @pytest.fixture()
 def start_client():
     option = webdriver.ChromeOptions()
+    option.add_experimental_option('excludeSwitches', ['enable-logging'])
     capabilities = DesiredCapabilities.CHROME.copy()
     capabilities["pageLoadStrategy"] = "eager"
     browser = webdriver.Chrome(options=option, desired_capabilities=capabilities, executable_path=
