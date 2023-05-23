@@ -6,43 +6,43 @@ class Main_Page(Base):
 
     # Переменные
 
-    catalog_button = "//button[@id = 'catalogPopupButton']"
-    captcha_huyatcha = "//input[@id='js-button']"
-    elementik = "//span[text() = 'Выгодно']"
+    captcha = "//input[@title = 'Вернуться на сайт']"
+    catalog = "//a[contains(@class, 'header__buttonCatalog')]" #
+    categories_computer = "//span[contains(text(), 'Компьютеры')]" #
 
     #Getters
 
-    def send_catalog_button(self):
-        return self.browser.find_element(By.XPATH, self.catalog_button)
+    def send_captcha(self):
+        return self.explicit_wait(self.captcha, 5)
 
-    def send_captcha_huyatcha(self):
-        return self.browser.find_element(By.XPATH, self.captcha_huyatcha)
+    def send_catalog(self):
+        return self.explicit_wait(self.catalog, 20)
+
+    def send_categories_computer(self):
+        return self.explicit_wait(self.categories_computer, 10)
 
     # Actions
 
-    def click_catalog_button(self):
+    def pas_captcha(self):
         while True:
             try:
-                self.send_catalog_button().click()
-                print('Кликнул на каталог товаров')
+                self.send_captcha().click()
                 break
             except:
-                self.send_catalog_button().click()
-                print('Кликнул на каталог товаров')
                 break
 
-    def click_send_captcha(self):
-        while True:
-            try:
-                self.send_captcha_huyatcha().click()
-                break
-            except:
-                break
+    def click_electronics(self):
+        self.send_catalog().click()
+        print('Кликнул на каталог')
+
+    def click_computers(self):
+        self.send_categories_computer().click()
+        print('Перехожу в раздел компьютеров и ноутбуков')
 
     # Start Steps
 
     def start_main_page(self):
-        self.click_send_captcha()
+        self.pas_captcha()
         self.get_current_url()
-        self.explicit_wait(self.catalog_button, 5)
-        self.click_catalog_button()
+        self.click_electronics()
+        self.click_computers()
