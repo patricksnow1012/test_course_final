@@ -4,6 +4,10 @@ from base_class.base import Base
 
 class Categories_PC(Base):
 
+    def __init__(self, browser):
+        super().__init__(browser)
+        self.browser = browser
+
     # Переменные
 
     noutebock = "//a[contains(@title, 'Ноутбуки')]"

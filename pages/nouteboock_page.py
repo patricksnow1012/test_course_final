@@ -1,8 +1,17 @@
 import time
 
+from selenium.webdriver.common.by import By
+
 from base_class.base import Base
 
 class Nouteboocks_Page(Base):
+
+    def __init__(self, browser):
+        super().__init__(browser)
+        self.browser = browser
+
+    i_name = str('')
+    i_price = str('')
 
     # Переменные
 
@@ -19,10 +28,18 @@ class Nouteboocks_Page(Base):
         return self.explicit_wait(self.buy, 20)
 
     def send_name_object(self):
-        return self.explicit_wait(self.name_object, 10)
+        global i_name
+        name_towar = self.browser.find_element(By.XPATH, self.name_object)
+        i_name = name_towar.text.removesuffix('(53013EUS) (53013EUS)')
+        print(i_name)
+        return i_name
 
     def send_price_object(self):
-        return self.explicit_wait(self.price_object, 10)
+        global i_price
+        price_towar = self.browser.find_element(By.XPATH, self.price_object)
+        i_price = price_towar.text.removesuffix(' ₽')
+        print(i_price)
+        return i_price
 
     def send_continue_buy(self):
         return self.explicit_wait(self.continue_buy, 5)
@@ -39,12 +56,6 @@ class Nouteboocks_Page(Base):
     def click_buy(self):
         self.send_buy().click()
 
-    def read_name_object(self):
-        self.remove_suffix(self.send_name_object(), '(53013EUS) (53013EUS)')
-
-    def read_price_object(self):
-        self.remove_suffix(self.send_price_object(), ' ₽')
-
     def click_continue_buy(self):
         self.send_continue_buy().click()
 
@@ -59,8 +70,8 @@ class Nouteboocks_Page(Base):
     def reference_noutebooc(self):
         self.get_current_url()
         self.scroll(0, 500)
-        self.read_name_object()
-        self.read_price_object()
+        self.send_name_object()
+        self.send_price_object()
         self.click_buy()
         self.click_continue_buy()
         self.scroll(500, 0)
