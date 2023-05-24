@@ -1,52 +1,53 @@
-from selenium.webdriver.common.by import By
-
 from base_class.base import Base
 
-class Main_Page(Base):
+
+class Main_page(Base):
 
     def __init__(self, browser):
         super().__init__(browser)
         self.browser = browser
 
-    # Переменные
+    # Variables
 
-    captcha = "//input[@title = 'Вернуться на сайт']"
-    catalog = "//a[contains(@class, 'header__buttonCatalog')]" #
-    categories_computer = "//span[contains(text(), 'Компьютеры')]" #
+    captcha_skip = "//input[@title = 'Вернуться на сайт']"
+    catalog_button = "//a[contains(@class, 'header__buttonCatalog')]"  #
+    button_categories_computer = "//span[contains(text(), 'Компьютеры')]"  #
 
-    #Getters
+    # Getters
 
-    def send_captcha(self):
-        return self.explicit_wait(self.captcha, 5)
+    def get_captcha_skip(self):
+        return self.explicit_wait(self.captcha_skip, 5)
 
-    def send_catalog(self):
-        return self.explicit_wait(self.catalog, 20)
+    def get_catalog_button(self):
+        return self.explicit_wait(self.catalog_button, 20)
 
-    def send_categories_computer(self):
-        return self.explicit_wait(self.categories_computer, 10)
+    def get_button_categories_computer(self):
+        return self.explicit_wait(self.button_categories_computer, 10)
 
     # Actions
 
-    def pas_captcha(self):
+    def skip_captcha(self):
         while True:
             try:
-                self.send_captcha().click()
+                self.get_captcha_skip().click()
+                print('Каптча уничтожена')
                 break
             except:
+                print('Каптча не найдена')
                 break
 
-    def click_electronics(self):
-        self.send_catalog().click()
+    def click_catalog_button(self):
+        self.get_catalog_button().click()
         print('Кликнул на каталог')
 
-    def click_computers(self):
-        self.send_categories_computer().click()
+    def click_button_categories(self):
+        self.get_button_categories_computer().click()
         print('Перехожу в раздел компьютеров и ноутбуков')
 
     # Start Steps
 
-    def start_main_page(self):
-        self.pas_captcha()
+    def main_page_no_registration(self):
+        self.skip_captcha()
         self.get_current_url()
-        self.click_electronics()
-        self.click_computers()
+        self.click_catalog_button()
+        self.click_button_categories()

@@ -1,24 +1,26 @@
 import pytest
 
-from pages.categories_page import Categories_Page
-from pages.computers_category import Categories_PC
-from pages.corzina import Corzina
-from pages.main_page import Main_Page
-from pages.nouteboock_page import Nouteboocks_Page
+from pages.page_categories import Page_categories
+from pages.page_categories_computers import Page_choose_laptop
+from pages.page_basket import Basket_page
+from pages.main_page import Main_page
+from pages.page_laptop_list import Page_laptop_list
 
-def test1(start_client):
 
-    # Определение классов переменных
+# Определение классов переменных
+
+def test_no_auth_buy_product(start_client):
     browser = start_client
-    main_pages = Main_Page(browser)
-    page_electro = Categories_Page(browser)
-    categoriespc = Categories_PC(browser)
-    reference_nout = Nouteboocks_Page(browser)
-    page_corzina = Corzina(browser)
+    main_page = Main_page(browser)
+    categories_page = Page_categories(browser)
+    laptop_reference_page = Page_choose_laptop(browser)
+    laptop_list_page = Page_laptop_list(browser)
+    page_basket = Basket_page(browser)
 
-    # Покупка товара
-    main_pages.start_main_page()
-    page_electro.click_page_nouteboockes()
-    categoriespc.start_computers_nouteboock()
-    reference_nout.reference_noutebooc()
-    page_corzina.start_corzina()
+    # Покупка товара без авторизации
+
+    main_page.main_page_no_registration()
+    categories_page.start_click_laptop()
+    laptop_reference_page.start_choose_laptop()
+    laptop_list_page.start_buy_laptop()
+    page_basket.start_compare_price_laptop()

@@ -1,32 +1,32 @@
 import datetime
 import time
-
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class Base():
+class Base:
 
     # Инициализация браузера
     def __init__(self, browser):
         self.browser = browser
 
-    def refresh(self):
+    # Обновление страницы
+    def refresh_page(self):
         return self.browser.refresh()
 
     # Конвертирование элемента в текст + удаление суффикса
 
     def remove_suffix(self, element, suffix):
-        element.text.removesuffix(f'{suffix}')
+        element = element.text.removesuffix(f'{suffix}')
         print(element)
         return element
 
     # Конвертирование элемента в текст + удаление префикса
 
     def remove_prefix(self, element, prefix):
-        element.text.removeprefix(f'{prefix}')
+        element = element.text.removeprefix(f'{prefix}')
         print(element)
         return element
 
@@ -37,7 +37,7 @@ class Base():
     # Явное ожидание
     def explicit_wait(self, elements, sec):
         return WebDriverWait(self.browser, sec).until(
-        EC.element_to_be_clickable((By.XPATH, elements)))
+            EC.element_to_be_clickable((By.XPATH, elements)))
 
     # Скролл страницы
     def scroll(self, x, y):
