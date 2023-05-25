@@ -7,8 +7,8 @@ class Page_laptop_list(Base):
         super().__init__(browser)
         self.browser = browser
 
-    name_global_product = str('')
-    name_price_product = str('')
+    name_global_product = ''
+    name_price_product = ''
 
     # Variables
 
@@ -25,18 +25,16 @@ class Page_laptop_list(Base):
         return self.explicit_wait(self.buy, 20)
 
     def get_name_text(self):
-        global name_global_product
-        private_name_product = self.browser.find_element(By.XPATH, self.name_object)
-        name_global_product = private_name_product.text.removesuffix('(53013EUS) (53013EUS)')
-        print(f'Название товара: {name_global_product}')
-        return name_global_product
+        private_price_product = self.browser.find_element(By.XPATH, self.name_object)
+        Page_laptop_list.name_global_product = private_price_product.text.removesuffix('(53013EUS) (53013EUS)')
+        print(f'Название товара: {Page_laptop_list.name_global_product}')
+        return Page_laptop_list.name_global_product
 
     def get_price_text(self):
-        global name_price_product
         private_price_product = self.browser.find_element(By.XPATH, self.price_object)
-        name_price_product = private_price_product.text.removesuffix(' ₽')
-        print(f'Цена товара = {name_price_product}')
-        return name_price_product
+        Page_laptop_list.name_price_product = private_price_product.text.removesuffix(' ₽')
+        print(f'Цена товара = {Page_laptop_list.name_price_product}')
+        return Page_laptop_list.name_price_product
 
     def get_continue_buy_button(self):
         return self.explicit_wait(self.continue_buy, 5)
