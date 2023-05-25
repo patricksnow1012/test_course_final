@@ -8,9 +8,9 @@ from selenium.webdriver import DesiredCapabilities
 def start_client():
     print('\nТест запускается')
     option = webdriver.ChromeOptions()
-    option.add_experimental_option('excludeSwitches', ['enable-logging'])
+    option.add_experimental_option('excludeSwitches', ['enable-logging'])  # Очистка консоли от мусора с ошибками
     capabilities = DesiredCapabilities.CHROME.copy()
-    capabilities["pageLoadStrategy"] = "eager"
+    capabilities["pageLoadStrategy"] = "eager"  # Чтобы не ждать долгую загрузку сайта
     browser = webdriver.Chrome(options=option, desired_capabilities=capabilities, executable_path=
     'C:\\Users\\Panknotkaen\\Desktop\\test_course_final\\chromedriver.exe')
     browser.maximize_window()
