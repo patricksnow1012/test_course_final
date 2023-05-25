@@ -4,7 +4,7 @@ from base_class.base import Base
 from utilities.logger import Logger
 
 
-class Page_laptop_list(Base):
+class PageLaptopList(Base):
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -29,15 +29,15 @@ class Page_laptop_list(Base):
 
     def get_name_text(self):
         private_name_product = self.explicit_wait(self.name_object, 5)
-        Page_laptop_list.name_global_product = self.remove_suffix(private_name_product, '(53013EUS) (53013EUS)')
-        print(f'Название товара: {Page_laptop_list.name_global_product}')
-        return Page_laptop_list.name_global_product
+        PageLaptopList.name_global_product = self.remove_suffix(private_name_product, '(53013EUS) (53013EUS)')
+        print(f'Название товара: {PageLaptopList.name_global_product}')
+        return PageLaptopList.name_global_product
 
     def get_price_text(self):
         private_price_product = self.explicit_wait(self.price_object, 5)
-        Page_laptop_list.price_global_product = self.remove_suffix(private_price_product, ' ₽')
-        print(f'Цена товара = {Page_laptop_list.price_global_product}')
-        return Page_laptop_list.price_global_product
+        PageLaptopList.price_global_product = self.remove_suffix(private_price_product, ' ₽')
+        print(f'Цена товара = {PageLaptopList.price_global_product}')
+        return PageLaptopList.price_global_product
 
     def get_continue_buy_button(self):
         return self.explicit_wait(self.continue_buy, 5)

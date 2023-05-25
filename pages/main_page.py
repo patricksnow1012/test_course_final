@@ -4,7 +4,7 @@ from base_class.base import Base
 from utilities.logger import Logger
 
 
-class Main_page(Base):
+class MainPage(Base):
 
     def __init__(self, browser):
         super().__init__(browser)

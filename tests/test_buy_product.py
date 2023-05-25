@@ -3,11 +3,11 @@
 
 import pytest
 import allure
-from pages.page_categories import Page_categories
-from pages.page_categories_computers import Page_choose_laptop
-from pages.page_basket import Basket_page
-from pages.main_page import Main_page
-from pages.page_laptop_list import Page_laptop_list
+from pages.page_categories import PageCategories
+from pages.page_categories_computers import PageChooseLaptop
+from pages.page_basket import BasketPage
+from pages.main_page import MainPage
+from pages.page_laptop_list import PageLaptopList
 
 
 @pytest.mark.run(order=1)
@@ -17,11 +17,11 @@ def test_no_auth_buy_product(start_client):
     # Определение классов переменных
 
     browser = start_client
-    main_page = Main_page(browser)
-    categories_page = Page_categories(browser)
-    laptop_reference_page = Page_choose_laptop(browser)
-    laptop_list_page = Page_laptop_list(browser)
-    page_basket = Basket_page(browser)
+    main_page = MainPage(browser)
+    categories_page = PageCategories(browser)
+    laptop_reference_page = PageChooseLaptop(browser)
+    laptop_list_page = PageLaptopList(browser)
+    page_basket = BasketPage(browser)
 
     # Покупка товара без авторизации
 
