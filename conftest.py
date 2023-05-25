@@ -1,8 +1,7 @@
 from selenium import webdriver
 import time
 import pytest
-from selenium.webdriver import DesiredCapabilities, ActionChains
-from selenium.webdriver.common.by import By
+from selenium.webdriver import DesiredCapabilities
 
 
 @pytest.fixture()
@@ -11,7 +10,7 @@ def start_client():
     option = webdriver.ChromeOptions()
     option.add_experimental_option('excludeSwitches', ['enable-logging'])
     capabilities = DesiredCapabilities.CHROME.copy()
-    capabilities["pageLoadStrategy"] = "none"
+    capabilities["pageLoadStrategy"] = "eager"
     browser = webdriver.Chrome(options=option, desired_capabilities=capabilities, executable_path=
     'C:\\Users\\Panknotkaen\\Desktop\\test_course_final\\chromedriver.exe')
     browser.maximize_window()

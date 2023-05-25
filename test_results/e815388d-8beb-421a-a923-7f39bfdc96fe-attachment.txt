@@ -1,0 +1,26 @@
+
+Тест запускается
+Каптча уничтожена
+Текущий URL = https://www.onlinetrade.ru/block.html?u=f4199b0ae5e597989e80aff4a72dfac9&from=https%3A%2F%2Fonlinetrade.ru%2F
+Кликнул на каталог
+Перехожу в раздел компьютеров и ноутбуков
+Текущий URL = https://www.onlinetrade.ru/catalogue/kompyutery_i_periferiya-c243/
+Выбрал категорию компьютеров и ноутбуков
+Текущий URL = https://www.onlinetrade.ru/catalogue/kompyutery_i_noutbuki-c393/
+Выбрал раздел Ноутбуки
+Текущий URL = https://www.onlinetrade.ru/catalogue/noutbuki-c9/
+Название товара: HUAWEI MateBook D16 RLEF-X 
+Цена товара = 75 900
+Кликнул на кнопку покупки
+Кликнул на кнопку "Продолжить покупки"
+Кликнул на Корзину
+Пропускаю регистрацию
+Текущий URL = https://www.onlinetrade.ru/basket.html
+Наименование товара в корзине: HUAWEI MateBook D16 RLEF-X 
+Стоимость товара в корзине = 75 900
+Итоговая стоимость товара: 75 900
+Названия товаров совпадают!
+Стоимость товаров совпадает!
+Стоимость товаров совпадает!
+
+Тест завершается

@@ -75,7 +75,7 @@ class Base:
     def get_screenshot(self):
         now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%M.%S")
         name_screenshot = f'screenshot {now_date}.png'
-        self.browser.save_screenshot('C:\\Users\\Panknotkaen\\AquaProjects\\test_project\\test_site\\screen\\'
+        self.browser.save_screenshot('C:\\Users\\Panknotkaen\\Desktop\\test_course_final\\screenshots\\'
                                      + name_screenshot)
 
     # Проверка урл

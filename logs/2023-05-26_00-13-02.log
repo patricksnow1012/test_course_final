@@ -1,0 +1,55 @@
+
+-----
+Test: tests/test_buy_product.py::test_no_auth_buy_product (call)
+Start time: 2023-05-26 00:13:04.713966
+Start name method: main_page_no_registration
+
+End time: 2023-05-26 00:13:14.055765
+End name method: main_page_no_registration
+URL: https://www.onlinetrade.ru/catalogue/kompyutery_i_periferiya-c243/
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_no_auth_buy_product (call)
+Start time: 2023-05-26 00:13:14.055765
+Start name method: start_click_laptop
+
+End time: 2023-05-26 00:13:15.076947
+End name method: start_click_laptop
+URL: https://www.onlinetrade.ru/catalogue/kompyutery_i_noutbuki-c393/
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_no_auth_buy_product (call)
+Start time: 2023-05-26 00:13:15.077949
+Start name method: start_choose_laptop
+
+End time: 2023-05-26 00:13:19.238699
+End name method: start_choose_laptop
+URL: https://www.onlinetrade.ru/catalogue/noutbuki-c9/
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_no_auth_buy_product (call)
+Start time: 2023-05-26 00:13:19.238699
+Start name method: start_buy_laptop
+
+End time: 2023-05-26 00:13:27.185141
+End name method: start_buy_laptop
+URL: https://www.onlinetrade.ru/basket.html
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_no_auth_buy_product (call)
+Start time: 2023-05-26 00:13:27.185141
+Start name method: start_compare_price_laptop
+
+End time: 2023-05-26 00:13:27.920877
+End name method: start_compare_price_laptop
+URL: https://www.onlinetrade.ru/basket.html
+
+-----

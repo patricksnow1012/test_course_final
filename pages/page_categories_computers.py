@@ -1,4 +1,7 @@
+import allure
+
 from base_class.base import Base
+from utilities.logger import Logger
 
 
 class Page_choose_laptop(Base):
@@ -25,5 +28,8 @@ class Page_choose_laptop(Base):
     # Steps
 
     def start_choose_laptop(self):
-        self.get_current_url()
-        self.click_choose_laptop()
+        with allure.step('Выбрать категорию "Ноутбуки"'):
+            Logger.add_start_step(method='start_choose_laptop')
+            self.get_current_url()
+            self.click_choose_laptop()
+            Logger.add_end_step(url=self.browser.current_url, method='start_choose_laptop')

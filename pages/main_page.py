@@ -1,4 +1,7 @@
+import allure
+
 from base_class.base import Base
+from utilities.logger import Logger
 
 
 class Main_page(Base):
@@ -32,6 +35,7 @@ class Main_page(Base):
                 self.get_captcha_skip().click()
                 print('Каптча уничтожена')
                 break
+
             except:
                 print('Каптча не найдена')
                 break
@@ -47,7 +51,10 @@ class Main_page(Base):
     # Start Steps
 
     def main_page_no_registration(self):
-        self.skip_captcha()
-        self.get_current_url()
-        self.click_catalog_button()
-        self.click_button_categories()
+        with allure.step('Запуск главной страницы. Клик по категориям товаров'):
+            Logger.add_start_step(method='main_page_no_registration')
+            self.skip_captcha()
+            self.get_current_url()
+            self.click_catalog_button()
+            self.click_button_categories()
+            Logger.add_end_step(url=self.browser.current_url, method='main_page_no_registration')

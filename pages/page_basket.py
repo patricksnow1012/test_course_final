@@ -1,6 +1,8 @@
-from selenium.webdriver.common.by import By
+import allure
+
 from base_class.base import Base
 from pages.page_laptop_list import Page_laptop_list
+from utilities.logger import Logger
 
 
 class Basket_page(Base):
@@ -43,11 +45,15 @@ class Basket_page(Base):
     # Start Steps
 
     def start_compare_price_laptop(self):
-        self.get_current_url()
-        self.get_finish_name()
-        self.get_finish_price()
-        self.scroll(0, 100)
-        self.get_finish_price_end()
-        self.assert_word(Basket_page.finish_global_name, Page_laptop_list.name_global_product)
-        self.assert_price(Basket_page.finish_global_price, Page_laptop_list.price_global_product)
-        self.assert_price(Basket_page.finish_price_global_end, Page_laptop_list.price_global_product)
+        with allure.step('Сравнение стоимости товара в корзине'):
+            Logger.add_start_step(method='start_compare_price_laptop')
+            self.get_current_url()
+            self.get_finish_name()
+            self.get_finish_price()
+            self.scroll(0, 100)
+            self.get_finish_price_end()
+            self.assert_word(Basket_page.finish_global_name, Page_laptop_list.name_global_product)
+            self.assert_price(Basket_page.finish_global_price, Page_laptop_list.price_global_product)
+            self.assert_price(Basket_page.finish_price_global_end, Page_laptop_list.price_global_product)
+            self.get_screenshot()
+            Logger.add_end_step(url=self.browser.current_url, method='start_compare_price_laptop')
