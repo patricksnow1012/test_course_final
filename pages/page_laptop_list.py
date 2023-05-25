@@ -8,12 +8,12 @@ class Page_laptop_list(Base):
         self.browser = browser
 
     name_global_product = ''
-    name_price_product = ''
+    price_global_product = ''
 
     # Variables
 
     buy = "//a[contains(@title, 'HUAWEI MateBook D16')][contains(@class, 'button')]"  #
-    name_object = "//a[contains(@class, 'item__name__3lines')][contains(@title, 'HUAWEI MateBook')]"  #
+    name_object = "//a[contains(@class, 'item__name__3lines')][contains(@title, 'HUAWEI MateBook D16')]"  #
     price_object = "//span[contains(text(), '75 900')]"
     continue_buy = "//a[@class = ' js__popup__close']"
     basket = "//a[contains(@title, 'Товаров в корзине')]"
@@ -25,16 +25,16 @@ class Page_laptop_list(Base):
         return self.explicit_wait(self.buy, 20)
 
     def get_name_text(self):
-        private_price_product = self.browser.find_element(By.XPATH, self.name_object)
-        Page_laptop_list.name_global_product = private_price_product.text.removesuffix('(53013EUS) (53013EUS)')
+        private_name_product = self.browser.find_element(By.XPATH, self.name_object)
+        Page_laptop_list.name_global_product = self.remove_suffix(private_name_product, '(53013EUS) (53013EUS)')
         print(f'Название товара: {Page_laptop_list.name_global_product}')
         return Page_laptop_list.name_global_product
 
     def get_price_text(self):
         private_price_product = self.browser.find_element(By.XPATH, self.price_object)
-        Page_laptop_list.name_price_product = private_price_product.text.removesuffix(' ₽')
-        print(f'Цена товара = {Page_laptop_list.name_price_product}')
-        return Page_laptop_list.name_price_product
+        Page_laptop_list.price_global_product = self.remove_suffix(private_price_product, ' ₽')
+        print(f'Цена товара = {Page_laptop_list.price_global_product}')
+        return Page_laptop_list.price_global_product
 
     def get_continue_buy_button(self):
         return self.explicit_wait(self.continue_buy, 5)

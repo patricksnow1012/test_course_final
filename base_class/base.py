@@ -16,18 +16,22 @@ class Base:
     def refresh_page(self):
         return self.browser.refresh()
 
+    # Удаление префикса и суффикса
+
+    def remove_all_presuffix(self, element, prefix, suffix):
+        element = element.text.removeprefix(f'{prefix}').removesuffix(f'{suffix}')
+        return element
+
     # Конвертирование элемента в текст + удаление суффикса
 
     def remove_suffix(self, element, suffix):
         element = element.text.removesuffix(f'{suffix}')
-        print(element)
         return element
 
     # Конвертирование элемента в текст + удаление префикса
 
     def remove_prefix(self, element, prefix):
         element = element.text.removeprefix(f'{prefix}')
-        print(element)
         return element
 
     # Неявное ожидание
@@ -41,7 +45,7 @@ class Base:
 
     # Скролл страницы
     def scroll(self, x, y):
-        return self.browser.execute_script(f'window.scrollBy({x},{y});')
+        return self.browser.execute_script(f'window.scrollBy({x},{y})')
 
     # Time Sleep
     def on_time_sleep(self, sec):
@@ -60,7 +64,12 @@ class Base:
     # Проверка текста
     def assert_word(self, word, result):
         assert word == result
-        print("Good Value Word")
+        print("Названия товаров совпадают!")
+
+    def assert_price(self, price1, price2):
+        assert price1 == price2
+        print("Стоимость товаров совпадает!")
+
 
     # Скриншот
     def get_screenshot(self):
