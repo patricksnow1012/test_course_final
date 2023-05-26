@@ -4,7 +4,7 @@
 import pytest
 import allure
 from pages.page_categories import PageCategories
-from pages.page_categories_computers import PageChooseLaptop
+from pages.choose_categories_computers import PageChooseLaptop
 from pages.page_basket import BasketPage
 from pages.main_page import MainPage
 from pages.page_laptop_list import PageLaptopList
