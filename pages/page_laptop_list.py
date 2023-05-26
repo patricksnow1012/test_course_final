@@ -1,6 +1,7 @@
 import allure
 
 from base_class.base import Base
+from pages.locators import PageLaptopListLocators
 from utilities.logger import Logger
 
 
@@ -13,40 +14,31 @@ class PageLaptopList(Base):
     name_global_product = ''
     price_global_product = ''
 
-    # Variables
-
-    buy = "//a[contains(@title, 'HUAWEI MateBook D16')][contains(@class, 'button')]"  #
-    name_object = "//a[contains(@class, 'item__name__3lines')][contains(@title, 'HUAWEI MateBook D16')]"  #
-    price_object = "//span[contains(text(), '75 900')]"
-    continue_buy = "//a[@class = ' js__popup__close']"
-    basket = "//a[contains(@title, 'Товаров в корзине')]"
-    skip_registration = "//a[@title = 'Продолжить без регистрации']"
-
     # Getters
 
     def get_buy_button(self):
-        return self.explicit_wait(self.buy, 10)
+        return self.explicit_wait(PageLaptopListLocators.buy, 10)
 
     def get_name_text(self):
-        private_name_product = self.explicit_wait(self.name_object, 5)
+        private_name_product = self.explicit_wait(PageLaptopListLocators.name_object, 5)
         PageLaptopList.name_global_product = self.remove_suffix(private_name_product, '(53013EUS) (53013EUS)')
         print(f'Название товара: {PageLaptopList.name_global_product}')
         return PageLaptopList.name_global_product
 
     def get_price_text(self):
-        private_price_product = self.explicit_wait(self.price_object, 5)
+        private_price_product = self.explicit_wait(PageLaptopListLocators.price_object, 5)
         PageLaptopList.price_global_product = self.remove_suffix(private_price_product, ' ₽')
         print(f'Цена товара = {PageLaptopList.price_global_product}')
         return PageLaptopList.price_global_product
 
     def get_continue_buy_button(self):
-        return self.explicit_wait(self.continue_buy, 5)
+        return self.explicit_wait(PageLaptopListLocators.continue_buy, 5)
 
     def get_basket_button(self):
-        return self.explicit_wait(self.basket, 5)
+        return self.explicit_wait(PageLaptopListLocators.basket, 5)
 
     def get_skip_registration_button(self):
-        return self.explicit_wait(self.skip_registration, 5)
+        return self.explicit_wait(PageLaptopListLocators.skip_registration, 5)
 
     # Actions
 

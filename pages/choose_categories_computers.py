@@ -1,6 +1,7 @@
 import allure
 
 from base_class.base import Base
+from pages.locators import PageCategoriesComputersLocators
 from utilities.logger import Logger
 
 
@@ -10,14 +11,10 @@ class PageChooseLaptop(Base):
         super().__init__(browser)
         self.browser = browser
 
-    # Variables
-
-    choose_laptop = "//a[contains(@title, 'Ноутбуки')]"
-
     # Getters
 
     def get_choose_laptop(self):
-        return self.explicit_wait(self.choose_laptop, 10)
+        return self.explicit_wait(PageCategoriesComputersLocators.choose_laptop, 10)
 
     # Actions
 

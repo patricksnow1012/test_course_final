@@ -1,6 +1,7 @@
 import allure
 
 from base_class.base import Base
+from pages.locators import PageBasketLocators
 from pages.page_laptop_list import PageLaptopList
 from utilities.logger import Logger
 
@@ -15,29 +16,23 @@ class BasketPage(Base):
     finish_global_price = ''
     finish_price_global_end = ''
 
-    # Variables
-
-    finish_product_name = "//a[contains(@class, 'semibold') and contains(@title, 'Ноутбук HUAWEI')]"
-    finish_product_price = "//div[@class = 'descriptionLine']/b[1]"
-    finish_price_end = "//div[contains(@class, 'resultsLine')]/b"
-
     # Getters
 
     def get_finish_name(self):
-        finish_private_name = self.explicit_wait(self.finish_product_name, 5)
+        finish_private_name = self.explicit_wait(PageBasketLocators.finish_product_name, 5)
         BasketPage.finish_global_name = self.remove_all_presuffix(finish_private_name, 'Ноутбук ',
                                                                    '(53013EUS) (53013EUS)')
         print(f'Наименование товара в корзине: {BasketPage.finish_global_name}')
         return BasketPage.finish_global_name
 
     def get_finish_price(self):
-        finish_private_price = self.explicit_wait(self.finish_product_price, 5)
+        finish_private_price = self.explicit_wait(PageBasketLocators.finish_product_price, 5)
         BasketPage.finish_global_price = self.remove_suffix(finish_private_price, ' ₽')
         print(f'Стоимость товара в корзине = {BasketPage.finish_global_price}')
         return BasketPage.finish_global_price
 
     def get_finish_price_end(self):
-        finish_price_private_end = self.explicit_wait(self.finish_price_end, 5)
+        finish_price_private_end = self.explicit_wait(PageBasketLocators.finish_price_end, 5)
         BasketPage.finish_price_global_end = self.remove_suffix(finish_price_private_end, ' ₽')
         print(f'Итоговая стоимость товара: {BasketPage.finish_price_global_end}')
         return BasketPage.finish_price_global_end

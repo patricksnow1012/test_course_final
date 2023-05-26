@@ -1,6 +1,7 @@
 import allure
 
 from base_class.base import Base
+from pages.locators import PageCategoriesLocators
 from utilities.logger import Logger
 
 
@@ -10,14 +11,10 @@ class PageCategories(Base):
         super().__init__(browser)
         self.browser = browser
 
-    # Variables
-
-    laptop_reference = "//span[@class = 'drawCats__item__name'][contains(text(), 'Компьютеры и ноутбуки ')]"
-
     # Getters
 
     def get_laptop_reference(self):
-        return self.explicit_wait(self.laptop_reference, 10)
+        return self.explicit_wait(PageCategoriesLocators.laptop_reference, 10)
 
     # Actions
 

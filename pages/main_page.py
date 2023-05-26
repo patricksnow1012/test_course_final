@@ -1,6 +1,7 @@
 import allure
 
 from base_class.base import Base
+from pages.locators import MainPageLocators
 from utilities.logger import Logger
 
 
@@ -10,22 +11,16 @@ class MainPage(Base):
         super().__init__(browser)
         self.browser = browser
 
-    # Variables
-
-    captcha_skip = "//input[@title = 'Вернуться на сайт']"
-    catalog_button = "//a[contains(@class, 'header__buttonCatalog')]"  #
-    button_categories_computer = "//span[contains(text(), 'Компьютеры')]"  #
-
     # Getters
 
     def get_captcha_skip(self):
-        return self.explicit_wait(self.captcha_skip, 5)
+        return self.explicit_wait(MainPageLocators.captcha_skip, 5)
 
     def get_catalog_button(self):
-        return self.explicit_wait(self.catalog_button, 20)
+        return self.explicit_wait(MainPageLocators.catalog_button, 20)
 
     def get_button_categories_computer(self):
-        return self.explicit_wait(self.button_categories_computer, 10)
+        return self.explicit_wait(MainPageLocators.button_categories_computer, 10)
 
     # Actions
 
