@@ -1,7 +1,6 @@
 import datetime
 import time
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -43,9 +42,9 @@ class Base:
 
     # Явное ожидание
 
-    def explicit_wait(self, elements, sec):
+    def explicit_wait(self, element, sec):
         return WebDriverWait(self.browser, sec).until(
-            EC.element_to_be_clickable((By.XPATH, elements)))
+            EC.element_to_be_clickable(element))
 
     # Скролл страницы
 
@@ -60,7 +59,7 @@ class Base:
     # Наведение на элемент
 
     def hover_actions_chains(self, element):
-        locator = self.browser.find_element(By.XPATH, element)
+        locator = self.browser.find_element(element)
         return ActionChains(self.browser).move_to_element(locator).perform()
 
     # Получение урл текущей страницы
