@@ -7,10 +7,6 @@ from utilities.logger import Logger
 
 class PageLaptopList(Base):
 
-    def __init__(self, browser):
-        super().__init__(browser)
-        self.browser = browser
-
     name_global_product = ''
     price_global_product = ''
 

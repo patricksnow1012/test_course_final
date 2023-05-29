@@ -7,10 +7,6 @@ from utilities.logger import Logger
 
 class PageChooseLaptop(Base):
 
-    def __init__(self, browser):
-        super().__init__(browser)
-        self.browser = browser
-
     # Getters
 
     def get_choose_laptop(self):

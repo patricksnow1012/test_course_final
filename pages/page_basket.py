@@ -8,10 +8,6 @@ from utilities.logger import Logger
 
 class BasketPage(Base):
 
-    def __init__(self, browser):
-        super().__init__(browser)
-        self.browser = browser
-
     finish_global_name = ''
     finish_global_price = ''
     finish_price_global_end = ''
